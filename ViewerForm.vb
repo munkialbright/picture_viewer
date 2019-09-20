@@ -159,6 +159,8 @@ Public Class ViewerForm
         For Each file In strDroppedFiles
             g_strFileName = GetFileName(file)
             Try
+                ' Reset the picture box
+                Me.picShowPicture.Bounds = g_PictureBoxCopy
                 ' Load the picture into the picture box
                 picShowPicture.Image = Image.FromFile(file)
                 ' Update our log file

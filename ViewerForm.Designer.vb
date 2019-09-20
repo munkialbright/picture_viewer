@@ -87,7 +87,7 @@ Partial Class ViewerForm
         '
         'btnEnlarge
         '
-        Me.btnEnlarge.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnEnlarge.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnEnlarge.Location = New System.Drawing.Point(339, 285)
         Me.btnEnlarge.Name = "btnEnlarge"
         Me.btnEnlarge.Size = New System.Drawing.Size(21, 23)
@@ -98,7 +98,7 @@ Partial Class ViewerForm
         '
         'btnShrink
         '
-        Me.btnShrink.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnShrink.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnShrink.Location = New System.Drawing.Point(360, 285)
         Me.btnShrink.Name = "btnShrink"
         Me.btnShrink.Size = New System.Drawing.Size(21, 23)

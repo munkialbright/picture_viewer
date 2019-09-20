@@ -8,7 +8,7 @@
         Try
             ' Show the open file dialog box.
             If ViewerForm.ofdSelectPicture.ShowDialog = DialogResult.OK Then
-                ' Reset the picture box first
+                ' Reset the picture box
                 ViewerForm.picShowPicture.Bounds = g_PictureBoxCopy
 
                 imgImage = ViewerForm.ofdSelectPicture.FileNames
@@ -68,11 +68,12 @@
     End Sub
 
     Public Sub PictureRotate()
-        If g_strFileName <> vbNull Then
+        Try
+            ViewerForm.picShowPicture.Image.RotateFlip(RotateFlipType.Rotate90FlipNone)
+            ViewerForm.picShowPicture.Refresh()
+        Catch ex As Exception
             Exit Sub
-        End If
-        ViewerForm.picShowPicture.Image.RotateFlip(RotateFlipType.Rotate90FlipNone)
-        ViewerForm.picShowPicture.Refresh()
+        End Try
     End Sub
 
     Public Sub FileProperties(ByVal ofdSelectPicture As Object)
