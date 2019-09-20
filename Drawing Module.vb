@@ -2,6 +2,7 @@
     Public Const c_strKeyName As String = "HKEY_CURRENT_USER\Software\CleverSoftware\PictureViewer\"
     Public g_PictureBoxCopy As Object
     Public g_strFileName As String
+    Public imgImage As String()
 
     Public Sub OpenPicture()
         Try
@@ -10,6 +11,7 @@
                 ' Reset the picture box first
                 ViewerForm.picShowPicture.Bounds = g_PictureBoxCopy
 
+                imgImage = ViewerForm.ofdSelectPicture.FileNames
                 g_strFileName = ViewerForm.ofdSelectPicture.FileName
 
                 ' Load the picture into the picture box.
