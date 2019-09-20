@@ -3,6 +3,7 @@
     Public g_PictureBoxCopy As Object
     Public g_strFileName As String
     Public imgImage As String()
+    Public count As Integer
 
     Public Sub OpenPicture()
         Try
@@ -47,6 +48,15 @@
         objGraphics.Dispose()
     End Sub
 
+    Public Sub ClearBorder()
+        Dim objGraphics2 As Graphics
+        objGraphics2 = ViewerForm.picShowPicture.Parent.CreateGraphics
+        objGraphics2.Clear(System.Drawing.SystemColors.Control)
+        objGraphics2.Dispose()
+        ViewerForm.Refresh()
+
+    End Sub
+
     Public Sub ZoomOut()
         ViewerForm.picShowPicture.Width = ViewerForm.picShowPicture.Width * 1.5
         ViewerForm.picShowPicture.Height = ViewerForm.picShowPicture.Height * 1.5
@@ -71,6 +81,22 @@
         Try
             ViewerForm.picShowPicture.Image.RotateFlip(RotateFlipType.Rotate90FlipNone)
             ViewerForm.picShowPicture.Refresh()
+        Catch ex As Exception
+            Exit Sub
+        End Try
+    End Sub
+
+    Public Sub PicDelete()
+        Try
+            If String.IsNullOrWhiteSpace(g_strFileName) Then Exit Sub
+            If MessageBox.Show("Are you sure you want to delete this picture?", _
+                "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = _
+                Windows.Forms.DialogResult.Yes Then
+                ViewerForm.picShowPicture.Image.Dispose()
+                My.Computer.FileSystem.DeleteFile(g_strFileName, _
+                FileIO.UIOption.AllDialogs, FileIO.RecycleOption.SendToRecycleBin)
+                MessageBox.Show("The picture has been successfully deleted.")
+            End If
         Catch ex As Exception
             Exit Sub
         End Try

@@ -25,7 +25,7 @@ Partial Class ViewerForm
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ViewerForm))
         Me.mnuPictureContext = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.DrawBorderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClearBorderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ofdSelectPicture = New System.Windows.Forms.OpenFileDialog()
         Me.btnEnlarge = New System.Windows.Forms.Button()
         Me.btnShrink = New System.Windows.Forms.Button()
@@ -38,8 +38,11 @@ Partial Class ViewerForm
         Me.mnuConfirmOnExit = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuQuit = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuZoomOut = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuZoomIn = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuRotate = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuDrawBorder = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuDeletePicture = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.mnuViewPictureLogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuOptions = New System.Windows.Forms.ToolStripMenuItem()
@@ -51,14 +54,15 @@ Partial Class ViewerForm
         Me.tbbOptions = New System.Windows.Forms.ToolStripButton()
         Me.tbbGetFileAttributes = New System.Windows.Forms.ToolStripButton()
         Me.tbbShowLog = New System.Windows.Forms.ToolStripButton()
+        Me.tbbDeletePicture = New System.Windows.Forms.ToolStripButton()
         Me.tbbRotate = New System.Windows.Forms.ToolStripButton()
         Me.tbbZoomOut = New System.Windows.Forms.ToolStripButton()
         Me.tbbZoomIn = New System.Windows.Forms.ToolStripButton()
         Me.sbrMyStatusStrip = New System.Windows.Forms.StatusStrip()
         Me.lblStatus = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.picShowPicture = New System.Windows.Forms.PictureBox()
         Me.btnNext = New System.Windows.Forms.Button()
         Me.btnPrevious = New System.Windows.Forms.Button()
+        Me.picShowPicture = New System.Windows.Forms.PictureBox()
         Me.mnuPictureContext.SuspendLayout()
         Me.mnuMainMenu.SuspendLayout()
         Me.tbrMainToolbar.SuspendLayout()
@@ -68,15 +72,19 @@ Partial Class ViewerForm
         '
         'mnuPictureContext
         '
-        Me.mnuPictureContext.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DrawBorderToolStripMenuItem})
+        Me.mnuPictureContext.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearBorderToolStripMenuItem})
         Me.mnuPictureContext.Name = "mnuPictureContext"
-        Me.mnuPictureContext.Size = New System.Drawing.Size(140, 26)
+        Me.mnuPictureContext.Size = New System.Drawing.Size(214, 26)
         '
-        'DrawBorderToolStripMenuItem
+        'ClearBorderToolStripMenuItem
         '
-        Me.DrawBorderToolStripMenuItem.Name = "DrawBorderToolStripMenuItem"
-        Me.DrawBorderToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
-        Me.DrawBorderToolStripMenuItem.Text = "Draw Border"
+        Me.ClearBorderToolStripMenuItem.AutoToolTip = True
+        Me.ClearBorderToolStripMenuItem.Name = "ClearBorderToolStripMenuItem"
+        Me.ClearBorderToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Shift) _
+                    Or System.Windows.Forms.Keys.D), System.Windows.Forms.Keys)
+        Me.ClearBorderToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.ClearBorderToolStripMenuItem.Text = "Clear Border"
+        Me.ClearBorderToolStripMenuItem.ToolTipText = "Clear Border"
         '
         'ofdSelectPicture
         '
@@ -88,9 +96,10 @@ Partial Class ViewerForm
         'btnEnlarge
         '
         Me.btnEnlarge.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnEnlarge.Location = New System.Drawing.Point(339, 285)
+        Me.btnEnlarge.AutoSize = True
+        Me.btnEnlarge.Location = New System.Drawing.Point(337, 285)
         Me.btnEnlarge.Name = "btnEnlarge"
-        Me.btnEnlarge.Size = New System.Drawing.Size(21, 23)
+        Me.btnEnlarge.Size = New System.Drawing.Size(23, 23)
         Me.btnEnlarge.TabIndex = 6
         Me.btnEnlarge.Tag = ""
         Me.btnEnlarge.Text = "^"
@@ -99,9 +108,10 @@ Partial Class ViewerForm
         'btnShrink
         '
         Me.btnShrink.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnShrink.Location = New System.Drawing.Point(360, 285)
+        Me.btnShrink.AutoSize = True
+        Me.btnShrink.Location = New System.Drawing.Point(358, 285)
         Me.btnShrink.Name = "btnShrink"
-        Me.btnShrink.Size = New System.Drawing.Size(21, 23)
+        Me.btnShrink.Size = New System.Drawing.Size(23, 23)
         Me.btnShrink.TabIndex = 7
         Me.btnShrink.Tag = ""
         Me.btnShrink.Text = "v"
@@ -151,6 +161,7 @@ Partial Class ViewerForm
         Me.mnuOpenPicture.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
         Me.mnuOpenPicture.Size = New System.Drawing.Size(209, 22)
         Me.mnuOpenPicture.Text = "&Open Picture"
+        Me.mnuOpenPicture.ToolTipText = "Open Picture"
         '
         'mnuGetFileAttributesToolStripMenuItem
         '
@@ -159,6 +170,7 @@ Partial Class ViewerForm
         Me.mnuGetFileAttributesToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
         Me.mnuGetFileAttributesToolStripMenuItem.Size = New System.Drawing.Size(209, 22)
         Me.mnuGetFileAttributesToolStripMenuItem.Text = "&Get File Attributes"
+        Me.mnuGetFileAttributesToolStripMenuItem.ToolTipText = "Get File Attributes"
         '
         'mnuConfirmOnExit
         '
@@ -177,17 +189,37 @@ Partial Class ViewerForm
         '
         'ToolToolStripMenuItem
         '
-        Me.ToolToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuRotate, Me.mnuDrawBorder, Me.ToolStripSeparator1, Me.mnuViewPictureLogToolStripMenuItem, Me.mnuOptions})
+        Me.ToolToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuZoomOut, Me.mnuZoomIn, Me.mnuRotate, Me.mnuDrawBorder, Me.mnuDeletePicture, Me.ToolStripSeparator1, Me.mnuViewPictureLogToolStripMenuItem, Me.mnuOptions})
         Me.ToolToolStripMenuItem.Name = "ToolToolStripMenuItem"
         Me.ToolToolStripMenuItem.Size = New System.Drawing.Size(42, 20)
         Me.ToolToolStripMenuItem.Text = "&Tool"
+        '
+        'mnuZoomOut
+        '
+        Me.mnuZoomOut.Image = Global.Picture_Viewer.My.Resources.Resources.zoom_out
+        Me.mnuZoomOut.Name = "mnuZoomOut"
+        Me.mnuZoomOut.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Up), System.Windows.Forms.Keys)
+        Me.mnuZoomOut.Size = New System.Drawing.Size(202, 22)
+        Me.mnuZoomOut.Text = "Zoom Out"
+        Me.mnuZoomOut.ToolTipText = "Zoom Out"
+        '
+        'mnuZoomIn
+        '
+        Me.mnuZoomIn.Image = Global.Picture_Viewer.My.Resources.Resources.zoom_in
+        Me.mnuZoomIn.Name = "mnuZoomIn"
+        Me.mnuZoomIn.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Down), System.Windows.Forms.Keys)
+        Me.mnuZoomIn.Size = New System.Drawing.Size(202, 22)
+        Me.mnuZoomIn.Text = "Zoom In"
+        Me.mnuZoomIn.ToolTipText = "Zoom In"
         '
         'mnuRotate
         '
         Me.mnuRotate.Image = Global.Picture_Viewer.My.Resources.Resources.rotate
         Me.mnuRotate.Name = "mnuRotate"
+        Me.mnuRotate.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
         Me.mnuRotate.Size = New System.Drawing.Size(202, 22)
         Me.mnuRotate.Text = "&Rotate Image"
+        Me.mnuRotate.ToolTipText = "Rotate Image"
         '
         'mnuDrawBorder
         '
@@ -196,6 +228,16 @@ Partial Class ViewerForm
         Me.mnuDrawBorder.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.D), System.Windows.Forms.Keys)
         Me.mnuDrawBorder.Size = New System.Drawing.Size(202, 22)
         Me.mnuDrawBorder.Text = "&Draw Border"
+        Me.mnuDrawBorder.ToolTipText = "Draw Border" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "To clear border right click on the picture box."
+        '
+        'mnuDeletePicture
+        '
+        Me.mnuDeletePicture.Image = Global.Picture_Viewer.My.Resources.Resources.Person
+        Me.mnuDeletePicture.Name = "mnuDeletePicture"
+        Me.mnuDeletePicture.ShortcutKeys = System.Windows.Forms.Keys.Delete
+        Me.mnuDeletePicture.Size = New System.Drawing.Size(202, 22)
+        Me.mnuDeletePicture.Text = "&Delete Picture"
+        Me.mnuDeletePicture.ToolTipText = "Delete Picture"
         '
         'ToolStripSeparator1
         '
@@ -209,6 +251,7 @@ Partial Class ViewerForm
         Me.mnuViewPictureLogToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.L), System.Windows.Forms.Keys)
         Me.mnuViewPictureLogToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.mnuViewPictureLogToolStripMenuItem.Text = "&View Picture Log"
+        Me.mnuViewPictureLogToolStripMenuItem.ToolTipText = "View Picture Log"
         '
         'mnuOptions
         '
@@ -217,10 +260,11 @@ Partial Class ViewerForm
         Me.mnuOptions.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
         Me.mnuOptions.Size = New System.Drawing.Size(202, 22)
         Me.mnuOptions.Text = "&Options"
+        Me.mnuOptions.ToolTipText = "Options"
         '
         'tbrMainToolbar
         '
-        Me.tbrMainToolbar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tbbOpenPicture, Me.ToolStripSeparator3, Me.tbbDrawBorder, Me.ToolStripSeparator2, Me.tbbOptions, Me.tbbGetFileAttributes, Me.tbbShowLog, Me.tbbRotate, Me.tbbZoomOut, Me.tbbZoomIn})
+        Me.tbrMainToolbar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tbbOpenPicture, Me.ToolStripSeparator3, Me.tbbDrawBorder, Me.ToolStripSeparator2, Me.tbbOptions, Me.tbbGetFileAttributes, Me.tbbShowLog, Me.tbbDeletePicture, Me.tbbRotate, Me.tbbZoomOut, Me.tbbZoomIn})
         Me.tbrMainToolbar.Location = New System.Drawing.Point(0, 24)
         Me.tbrMainToolbar.Name = "tbrMainToolbar"
         Me.tbrMainToolbar.Size = New System.Drawing.Size(384, 25)
@@ -250,6 +294,7 @@ Partial Class ViewerForm
         Me.tbbDrawBorder.Name = "tbbDrawBorder"
         Me.tbbDrawBorder.Size = New System.Drawing.Size(23, 22)
         Me.tbbDrawBorder.Text = "Draw Border"
+        Me.tbbDrawBorder.ToolTipText = "Draw Border" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "To clear border right click on the picture box."
         '
         'ToolStripSeparator2
         '
@@ -283,6 +328,15 @@ Partial Class ViewerForm
         Me.tbbShowLog.Name = "tbbShowLog"
         Me.tbbShowLog.Size = New System.Drawing.Size(23, 22)
         Me.tbbShowLog.Text = "View Picture Log"
+        '
+        'tbbDeletePicture
+        '
+        Me.tbbDeletePicture.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tbbDeletePicture.Image = Global.Picture_Viewer.My.Resources.Resources.Person
+        Me.tbbDeletePicture.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tbbDeletePicture.Name = "tbbDeletePicture"
+        Me.tbbDeletePicture.Size = New System.Drawing.Size(23, 22)
+        Me.tbbDeletePicture.Text = "Delete Picture"
         '
         'tbbRotate
         '
@@ -326,6 +380,30 @@ Partial Class ViewerForm
         Me.lblStatus.Size = New System.Drawing.Size(98, 17)
         Me.lblStatus.Text = "No image loaded"
         '
+        'btnNext
+        '
+        Me.btnNext.AllowDrop = True
+        Me.btnNext.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnNext.AutoSize = True
+        Me.btnNext.Location = New System.Drawing.Point(358, 153)
+        Me.btnNext.Name = "btnNext"
+        Me.btnNext.Size = New System.Drawing.Size(23, 23)
+        Me.btnNext.TabIndex = 12
+        Me.btnNext.Text = ">"
+        Me.btnNext.UseVisualStyleBackColor = True
+        '
+        'btnPrevious
+        '
+        Me.btnPrevious.AllowDrop = True
+        Me.btnPrevious.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnPrevious.AutoSize = True
+        Me.btnPrevious.Location = New System.Drawing.Point(337, 153)
+        Me.btnPrevious.Name = "btnPrevious"
+        Me.btnPrevious.Size = New System.Drawing.Size(23, 23)
+        Me.btnPrevious.TabIndex = 13
+        Me.btnPrevious.Text = "<"
+        Me.btnPrevious.UseVisualStyleBackColor = True
+        '
         'picShowPicture
         '
         Me.picShowPicture.AccessibleDescription = "PictureBox"
@@ -341,28 +419,6 @@ Partial Class ViewerForm
         Me.picShowPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.picShowPicture.TabIndex = 2
         Me.picShowPicture.TabStop = False
-        '
-        'btnNext
-        '
-        Me.btnNext.AllowDrop = True
-        Me.btnNext.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnNext.Location = New System.Drawing.Point(360, 153)
-        Me.btnNext.Name = "btnNext"
-        Me.btnNext.Size = New System.Drawing.Size(21, 23)
-        Me.btnNext.TabIndex = 12
-        Me.btnNext.Text = ">"
-        Me.btnNext.UseVisualStyleBackColor = True
-        '
-        'btnPrevious
-        '
-        Me.btnPrevious.AllowDrop = True
-        Me.btnPrevious.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnPrevious.Location = New System.Drawing.Point(339, 153)
-        Me.btnPrevious.Name = "btnPrevious"
-        Me.btnPrevious.Size = New System.Drawing.Size(21, 23)
-        Me.btnPrevious.TabIndex = 13
-        Me.btnPrevious.Text = "<"
-        Me.btnPrevious.UseVisualStyleBackColor = True
         '
         'ViewerForm
         '
@@ -419,7 +475,7 @@ Partial Class ViewerForm
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents mnuOptions As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuPictureContext As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents DrawBorderToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ClearBorderToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tbrMainToolbar As System.Windows.Forms.ToolStrip
     Friend WithEvents tbbOpenPicture As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
@@ -438,5 +494,9 @@ Partial Class ViewerForm
     Friend WithEvents tbbZoomIn As System.Windows.Forms.ToolStripButton
     Friend WithEvents btnNext As System.Windows.Forms.Button
     Friend WithEvents btnPrevious As System.Windows.Forms.Button
+    Friend WithEvents tbbDeletePicture As System.Windows.Forms.ToolStripButton
+    Friend WithEvents mnuDeletePicture As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuZoomOut As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuZoomIn As System.Windows.Forms.ToolStripMenuItem
 
 End Class
