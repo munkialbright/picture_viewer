@@ -6,7 +6,6 @@ Public Class ViewerForm
     Private m_strUserName As String
     Private m_blnPromptOnExit As Boolean
     Private m_objPictureBackColor As Color
-    Private count As Integer
 
     Private Sub btnEnlarge_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnlarge.Click
         Me.Width = Me.Width + 20
@@ -169,7 +168,7 @@ Public Class ViewerForm
                 sbrMyStatusStrip.Items(0).Text = g_strFileName
 
             Catch ex As Exception
-                MessageBox.Show("You recommended to highlight all the images in the directory and drop in the picture box.")
+                MessageBox.Show("You recommended to highlight all the images in the directory and drop in the picture box.", "Picture Viewer", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End Try
         Next
     End Sub
@@ -192,7 +191,7 @@ Public Class ViewerForm
             ' Show the file's name in the status bar
             sbrMyStatusStrip.Items(0).Text = g_strFileName
         Catch ex As Exception
-            MessageBox.Show("You've reached the last picture in the list")
+            MessageBox.Show("You've reached the last picture in the list", "Picture Viewer", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Try
     End Sub
 
@@ -209,7 +208,15 @@ Public Class ViewerForm
             ' Show the file's name in the status bar
             sbrMyStatusStrip.Items(0).Text = g_strFileName
         Catch ex As Exception
-            MessageBox.Show("You've reached the last picture in the list")
+            MessageBox.Show("You've reached the last picture in the list", "Picture Viewer", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Try
+    End Sub
+
+    Private Sub tbbDeletePicture_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbbDeletePicture.Click
+        PicDelete()
+    End Sub
+
+    Private Sub mnuDeletePicture_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuDeletePicture.Click
+        PicDelete()
     End Sub
 End Class

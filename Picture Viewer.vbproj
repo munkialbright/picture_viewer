@@ -31,7 +31,7 @@
     <ProductName>Picture Viewer</ProductName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>14</ApplicationRevision>
+    <ApplicationRevision>18</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -222,6 +222,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\zoom out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Person.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
