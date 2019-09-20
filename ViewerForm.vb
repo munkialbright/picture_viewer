@@ -112,11 +112,11 @@ Public Class ViewerForm
     End Sub
 
     Private Sub tbbGetFileAttributes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbbGetFileAttributes.Click
-        FileProperties(ofdSelectPicture)
+        FileProperties(g_strFileName)
     End Sub
 
     Private Sub mnuGetFileAttributesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuGetFileAttributesToolStripMenuItem.Click
-        FileProperties(ofdSelectPicture)
+        FileProperties(g_strFileName)
     End Sub
 
     Private Sub tbbShowLog_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbbShowLog.Click
@@ -182,6 +182,9 @@ Public Class ViewerForm
         Try
             ' Load the picture into the picture box
             picShowPicture.Image = Image.FromFile(imgImage(count))
+
+            g_strFileName = GetFileName(imgImage(count))
+
             ' Update our log file
             UpdateLog(g_strFileName)
             ' Show the file's name in the status bar
@@ -196,6 +199,9 @@ Public Class ViewerForm
         Try
             ' Load the picture into the picture box
             picShowPicture.Image = Image.FromFile(imgImage(count))
+
+            g_strFileName = GetFileName(imgImage(count))
+
             ' Update our log file
             UpdateLog(g_strFileName)
             ' Show the file's name in the status bar

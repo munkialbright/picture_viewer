@@ -328,8 +328,8 @@ Partial Class ViewerForm
         '
         'picShowPicture
         '
-        Me.picShowPicture.AccessibleDescription = ""
-        Me.picShowPicture.AccessibleName = ""
+        Me.picShowPicture.AccessibleDescription = "PictureBox"
+        Me.picShowPicture.AccessibleName = "PictureBox"
         Me.picShowPicture.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
