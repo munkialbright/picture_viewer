@@ -66,6 +66,9 @@
     End Sub
 
     Public Sub PictureRotate()
+        If g_strFileName <> vbNull Then
+            Exit Sub
+        End If
         ViewerForm.picShowPicture.Image.RotateFlip(RotateFlipType.Rotate90FlipNone)
         ViewerForm.picShowPicture.Refresh()
     End Sub

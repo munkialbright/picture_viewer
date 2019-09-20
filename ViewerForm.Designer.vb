@@ -182,6 +182,7 @@ Partial Class ViewerForm
         '
         'mnuRotate
         '
+        Me.mnuRotate.Image = Global.Picture_Viewer.My.Resources.Resources.rotate
         Me.mnuRotate.Name = "mnuRotate"
         Me.mnuRotate.Size = New System.Drawing.Size(202, 22)
         Me.mnuRotate.Text = "&Rotate Image"
@@ -358,6 +359,7 @@ Partial Class ViewerForm
         Me.Controls.Add(Me.btnEnlarge)
         Me.Controls.Add(Me.picShowPicture)
         Me.Controls.Add(Me.mnuMainMenu)
+        Me.HelpButton = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.mnuMainMenu
         Me.Name = "ViewerForm"
