@@ -79,32 +79,15 @@ Public Class ViewerForm
         Me.Close()
     End Sub
 
-    Private Sub mnuDrawBorder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuDrawBorder.Click
-        DrawBorder(picShowPicture)
-    End Sub
-
     Private Sub mnuOptions_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuOptions.Click
         Optionsform.ShowDialog()
-    End Sub
-
-    Private Sub DrawBorderToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DrawBorderToolStripMenuItem.Click
-        Dim objGraphics As Graphics
-        objGraphics = Me.CreateGraphics
-        objGraphics.Clear(System.Drawing.SystemColors.Control)
-        objGraphics.DrawRectangle(System.Drawing.Pens.Blue, _
-        picShowPicture.Left - 1, _
-        picShowPicture.Top - 1, _
-        picShowPicture.Width + 1, picShowPicture.Height + 1)
-        objGraphics.Dispose()
     End Sub
 
     Private Sub tbbOpenPicture_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbbOpenPicture.Click
         OpenPicture()
     End Sub
 
-    Private Sub tbbDrawBorder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbbDrawBorder.Click
-        DrawBorder(picShowPicture)
-    End Sub
+    
 
     Private Sub tbbOptions_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbbOptions.Click
         Optionsform.ShowDialog()
@@ -218,5 +201,25 @@ Public Class ViewerForm
 
     Private Sub mnuDeletePicture_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuDeletePicture.Click
         PicDelete()
+    End Sub
+
+    Private Sub ZoomOutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuZoomOut.Click
+        ZoomOut()
+    End Sub
+
+    Private Sub mnuZoomIn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuZoomIn.Click
+        ZoomIn()
+    End Sub
+    
+    Private Sub tbbDrawBorder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbbDrawBorder.Click
+        DrawBorder(picShowPicture)
+    End Sub
+
+    Private Sub mnuDrawBorder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuDrawBorder.Click
+        DrawBorder(picShowPicture)
+    End Sub
+
+    Private Sub ClearBorderToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ClearBorderToolStripMenuItem.Click
+        ClearBorder()
     End Sub
 End Class

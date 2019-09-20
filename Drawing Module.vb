@@ -48,6 +48,15 @@
         objGraphics.Dispose()
     End Sub
 
+    Public Sub ClearBorder()
+        Dim objGraphics2 As Graphics
+        objGraphics2 = ViewerForm.picShowPicture.Parent.CreateGraphics
+        objGraphics2.Clear(System.Drawing.SystemColors.Control)
+        objGraphics2.Dispose()
+        ViewerForm.Refresh()
+
+    End Sub
+
     Public Sub ZoomOut()
         ViewerForm.picShowPicture.Width = ViewerForm.picShowPicture.Width * 1.5
         ViewerForm.picShowPicture.Height = ViewerForm.picShowPicture.Height * 1.5
