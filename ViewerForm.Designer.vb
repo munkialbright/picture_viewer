@@ -57,6 +57,8 @@ Partial Class ViewerForm
         Me.sbrMyStatusStrip = New System.Windows.Forms.StatusStrip()
         Me.lblStatus = New System.Windows.Forms.ToolStripStatusLabel()
         Me.picShowPicture = New System.Windows.Forms.PictureBox()
+        Me.btnNext = New System.Windows.Forms.Button()
+        Me.btnPrevious = New System.Windows.Forms.Button()
         Me.mnuPictureContext.SuspendLayout()
         Me.mnuMainMenu.SuspendLayout()
         Me.tbrMainToolbar.SuspendLayout()
@@ -85,7 +87,7 @@ Partial Class ViewerForm
         '
         'btnEnlarge
         '
-        Me.btnEnlarge.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnEnlarge.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnEnlarge.Location = New System.Drawing.Point(339, 285)
         Me.btnEnlarge.Name = "btnEnlarge"
         Me.btnEnlarge.Size = New System.Drawing.Size(21, 23)
@@ -96,7 +98,7 @@ Partial Class ViewerForm
         '
         'btnShrink
         '
-        Me.btnShrink.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnShrink.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnShrink.Location = New System.Drawing.Point(360, 285)
         Me.btnShrink.Name = "btnShrink"
         Me.btnShrink.Size = New System.Drawing.Size(21, 23)
@@ -326,8 +328,8 @@ Partial Class ViewerForm
         '
         'picShowPicture
         '
-        Me.picShowPicture.AccessibleDescription = ""
-        Me.picShowPicture.AccessibleName = ""
+        Me.picShowPicture.AccessibleDescription = "PictureBox"
+        Me.picShowPicture.AccessibleName = "PictureBox"
         Me.picShowPicture.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -340,6 +342,28 @@ Partial Class ViewerForm
         Me.picShowPicture.TabIndex = 2
         Me.picShowPicture.TabStop = False
         '
+        'btnNext
+        '
+        Me.btnNext.AllowDrop = True
+        Me.btnNext.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnNext.Location = New System.Drawing.Point(360, 153)
+        Me.btnNext.Name = "btnNext"
+        Me.btnNext.Size = New System.Drawing.Size(21, 23)
+        Me.btnNext.TabIndex = 12
+        Me.btnNext.Text = ">"
+        Me.btnNext.UseVisualStyleBackColor = True
+        '
+        'btnPrevious
+        '
+        Me.btnPrevious.AllowDrop = True
+        Me.btnPrevious.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnPrevious.Location = New System.Drawing.Point(339, 153)
+        Me.btnPrevious.Name = "btnPrevious"
+        Me.btnPrevious.Size = New System.Drawing.Size(21, 23)
+        Me.btnPrevious.TabIndex = 13
+        Me.btnPrevious.Text = "<"
+        Me.btnPrevious.UseVisualStyleBackColor = True
+        '
         'ViewerForm
         '
         Me.AccessibleDescription = "Picture Viewer"
@@ -351,6 +375,8 @@ Partial Class ViewerForm
         Me.AutoScroll = True
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange
         Me.ClientSize = New System.Drawing.Size(384, 336)
+        Me.Controls.Add(Me.btnPrevious)
+        Me.Controls.Add(Me.btnNext)
         Me.Controls.Add(Me.sbrMyStatusStrip)
         Me.Controls.Add(Me.tbrMainToolbar)
         Me.Controls.Add(Me.lblY)
@@ -410,5 +436,7 @@ Partial Class ViewerForm
     Friend WithEvents mnuRotate As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tbbZoomOut As System.Windows.Forms.ToolStripButton
     Friend WithEvents tbbZoomIn As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnNext As System.Windows.Forms.Button
+    Friend WithEvents btnPrevious As System.Windows.Forms.Button
 
 End Class

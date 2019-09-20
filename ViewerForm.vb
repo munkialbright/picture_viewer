@@ -6,6 +6,7 @@ Public Class ViewerForm
     Private m_strUserName As String
     Private m_blnPromptOnExit As Boolean
     Private m_objPictureBackColor As Color
+    Private count As Integer
 
     Private Sub btnEnlarge_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnlarge.Click
         Me.Width = Me.Width + 20
@@ -111,11 +112,11 @@ Public Class ViewerForm
     End Sub
 
     Private Sub tbbGetFileAttributes_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbbGetFileAttributes.Click
-        FileProperties(ofdSelectPicture)
+        FileProperties(g_strFileName)
     End Sub
 
     Private Sub mnuGetFileAttributesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuGetFileAttributesToolStripMenuItem.Click
-        FileProperties(ofdSelectPicture)
+        FileProperties(g_strFileName)
     End Sub
 
     Private Sub tbbShowLog_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbbShowLog.Click
@@ -153,15 +154,23 @@ Public Class ViewerForm
     Private Sub ViewerForm_DragDrop(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DragEventArgs) Handles MyBase.DragDrop
         ' Take dropped items and hold in array
         Dim strDroppedFiles As String() = e.Data.GetData(DataFormats.FileDrop)
+        imgImage = e.Data.GetData(DataFormats.FileDrop)
         ' Loop through all dropped files, displaying them
         For Each file In strDroppedFiles
             g_strFileName = GetFileName(file)
-            ' Load the picture in the picture box
-            picShowPicture.Image = Image.FromFile(file)
-            ' Update our log file
-            UpdateLog(g_strFileName)
-            ' Show the file's name in the status bar
-            sbrMyStatusStrip.Items(0).Text = g_strFileName
+            Try
+                ' Reset the picture box
+                Me.picShowPicture.Bounds = g_PictureBoxCopy
+                ' Load the picture into the picture box
+                picShowPicture.Image = Image.FromFile(file)
+                ' Update our log file
+                UpdateLog(g_strFileName)
+                ' Show the file's name in the status bar
+                sbrMyStatusStrip.Items(0).Text = g_strFileName
+
+            Catch ex As Exception
+                MessageBox.Show("You recommended to highlight all the images in the directory and drop in the picture box.")
+            End Try
         Next
     End Sub
 
@@ -170,4 +179,37 @@ Public Class ViewerForm
         Return System.IO.Path.GetFullPath(FilePath)
     End Function
 
+    Private Sub btnNext_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNext.Click
+        count += 1
+        Try
+            ' Load the picture into the picture box
+            picShowPicture.Image = Image.FromFile(imgImage(count))
+
+            g_strFileName = GetFileName(imgImage(count))
+
+            ' Update our log file
+            UpdateLog(g_strFileName)
+            ' Show the file's name in the status bar
+            sbrMyStatusStrip.Items(0).Text = g_strFileName
+        Catch ex As Exception
+            MessageBox.Show("You've reached the last picture in the list")
+        End Try
+    End Sub
+
+    Private Sub btnPrevious_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPrevious.Click
+        count -= 1
+        Try
+            ' Load the picture into the picture box
+            picShowPicture.Image = Image.FromFile(imgImage(count))
+
+            g_strFileName = GetFileName(imgImage(count))
+
+            ' Update our log file
+            UpdateLog(g_strFileName)
+            ' Show the file's name in the status bar
+            sbrMyStatusStrip.Items(0).Text = g_strFileName
+        Catch ex As Exception
+            MessageBox.Show("You've reached the last picture in the list")
+        End Try
+    End Sub
 End Class
